@@ -2,6 +2,9 @@
 
 > 基于前端开发陷阱升级的架构级索引。每个 pitfall 不仅包含开发层面的诊断和修复，
 > 更深度分析架构层面根因、系统级预防策略、跨层影响链和相关架构模式。
+>
+> 目前已收录 **50 个**架构级陷阱，覆盖数据流、构建部署、CSS、移动端、JavaScript、
+> 可观测性与性能工程、隐私合规等领域。
 
 ---
 
@@ -51,6 +54,18 @@
 | Pitfall | 标题 | 架构根因关键词 |
 |---------|------|--------------|
 | [pit-021](pit-021.md) | iOS 键盘遮挡/不恢复 | 移动端平台适配未系统化、键盘作为交互设施未提升为全局关注点、WKWebView 与 Safari 差异未建模 |
+
+### 可观测性与性能工程
+RUM 数据采集、错误监控降噪、埋点治理、会话回放隐私、性能预算门禁。
+
+| Pitfall | 标题 | 架构根因关键词 |
+|---------|------|--------------|
+| [pit-044](pit-044.md) | 前端监控盲区 | 可观测性未作为架构质量属性、前端 I/O 模型错误分类缺失、告警策略非设计而是追加 |
+| [pit-046](pit-046.md) | RUM CLS value/delta 误用 | 采集层与聚合层语义契约缺失、缺少 Metrics Semantics Validator、可观测性数据建模缺失 |
+| [pit-047](pit-047.md) | Sentry 上报风暴 | 信号提取管道缺失、错误可操作性(Actionability)建模缺失、缺少多层噪音过滤体系 |
+| [pit-048](pit-048.md) | 埋点数据污染 | 数据契约(Data Contract)在前端缺失、埋点被当作副作用而非数据产品、缺少全生命周期治理 |
+| [pit-049](pit-049.md) | 会话回放隐私泄露 | Privacy by Design 原则缺失、DOM 数据分类标记缺失、缺少采集/传输/存储三层防护 |
+| [pit-050](pit-050.md) | 性能预算形同虚设 | 非功能性需求可测试性缺失、性能所有权模糊、Lab-RUM 脱节、预算无强制闭环 |
 
 ### JavaScript 语言陷阱
 浮点精度、Promise 错误处理、异步迭代模式、日期时区、数组操作。
@@ -235,6 +250,14 @@
 - [pit-006](pit-006.md) — iOS Safari 100vh
 - [pit-010](pit-010.md) — scroll-snap iOS 异常
 
+### 可观测性与监控
+- [pit-044](pit-044.md) — 前端监控盲区（错误/性能/行为/告警四维盲区）
+- [pit-046](pit-046.md) — RUM CLS 数据采集失真（value vs delta 误用）
+- [pit-047](pit-047.md) — Sentry 上报风暴（配额耗尽/噪音过滤缺失）
+- [pit-048](pit-048.md) — 埋点数据污染（脏数据/类型错误/重复丢失）
+- [pit-049](pit-049.md) — 会话回放隐私泄露（rrweb 未脱敏/GDPR 合规）
+- [pit-050](pit-050.md) — 性能预算形同虚设（CI 门禁配置了但从未阻止回归）
+
 ---
 
 ## 五、按标签查找
@@ -256,6 +279,24 @@
 
 ### #react-native
 [pit-014](pit-014.md)
+
+### #observability / #monitoring
+[pit-044](pit-044.md) · [pit-046](pit-046.md) · [pit-047](pit-047.md) · [pit-048](pit-048.md) · [pit-050](pit-050.md)
+
+### #privacy / #compliance
+[pit-049](pit-049.md)
+
+### #performance-budget
+[pit-050](pit-050.md)
+
+### #rum / #web-vitals
+[pit-044](pit-044.md) · [pit-046](pit-046.md)
+
+### #sentry
+[pit-044](pit-044.md) · [pit-047](pit-047.md)
+
+### #tracking / #analytics
+[pit-048](pit-048.md)
 
 ### #ios-safari / #mobile
 [pit-006](pit-006.md) · [pit-010](pit-010.md) · [pit-021](pit-021.md)
@@ -287,3 +328,9 @@
 | pit-019 | 过早抽象反模式, 组件组合模式 | TypeScript严格模式 |
 | pit-020 | 与pit-019相同 + TDD | — |
 | pit-021 | pit-006同源视口管理 | CSS方案选型, RN WebView |
+| pit-044 | Telemetry as Code, Circuit Breaker(前端) | — |
+| pit-046 | Metrics Contract Pattern, Telemetry Pipeline | Data Quality SLA |
+| pit-047 | Signal Extraction Pipeline, Error Budget | Client-Side Circuit Breaker |
+| pit-048 | Data Contract Pattern, Registry-Driven Development | SDK as Gatekeeper |
+| pit-049 | Privacy by Design, Data Classification for Frontend, Layered Privacy Protection | — |
+| pit-050 | Performance Budget as Code, RAIL模型, Progressive Performance Governance, Lab-RUM Bridge | — |

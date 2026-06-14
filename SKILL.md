@@ -104,11 +104,19 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 1. **MUST** 读取 `references/decisions.md` 找到对应决策树，按分支推导
 2. 参考 `references/patterns.md` 确认模式选择和反模式规避
 3. 参考 `references/checklist.md` 做完整性验证（性能/安全/兼容性/可观测性）
+4. 如涉及监控/埋点/错误追踪架构选型，读取 `references/frontend-observability.md` 第七章决策树
 
 ### 场景 C: 性能优化
-1. **MUST** 读取 `references/diagnostic-mode.md` 中性能诊断部分
-2. 读取 `references/pitfalls/INDEX.md` 中 `#performance` 标签的陷阱
-3. 参考 `references/checklist.md` 性能检查清单
+1. **MUST** 读取 `references/performance-engineering.md` 中对应性能维度（CWV/内存/帧率/Bundle）
+2. **MUST** 读取 `references/diagnostic-mode.md` 中性能诊断部分
+3. 读取 `references/pitfalls/INDEX.md` 中 `#performance` `#web-vitals` 标签的陷阱
+4. 参考 `references/checklist.md` 性能检查清单
+5. 如需建设/审查性能监控体系，读取 `references/frontend-observability.md` 第二-四章
+
+### 场景 G: 可观测性建设 (埋点/监控/错误追踪/会话回放)
+1. **MUST** 读取 `references/frontend-observability.md` 完整内容
+2. 读取 `references/pitfalls/INDEX.md` 中 `#observability` `#monitoring` `#rum` 标签的陷阱（pit-046 ~ pit-050）
+3. 如需性能预算和 CI 门禁，读取 `references/performance-engineering.md` 第四章
 
 ### 场景 D: 多终端兼容
 1. **MUST** 读取 `references/compatibility-matrix.md` 完整内容，确认目标终端覆盖
@@ -122,6 +130,7 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 1. **MUST** 读取 `references/checklist.md` 完整内容作为审查清单
 2. 读取 `references/patterns.md` 中反模式部分
 3. 读取 `references/pitfalls/INDEX.md` 中相关标签陷阱
+4. 如审查涉及埋点/Sentry/日志上报代码，读取 `references/frontend-observability.md` 第八章反模式
 
 ---
 
@@ -134,6 +143,7 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 | 白屏/空白 | pit-001 (SSR 水合不匹配), pit-006 (chunk 404), pit-012 (CSS 副作用丢失) |
 | 样式异常 | pit-006 (100vh 溢出), pit-007 (z-index 层叠), pit-008 (Flexbox 塌陷), pit-023 (Safe Area) |
 | 性能问题 | pit-001 (useEffect 死循环), pit-009 (backdrop-filter GPU), pit-024 (Bundle 过大) |
+| 可观测性/监控 | pit-046 (RUM 数据失真), pit-047 (Sentry 上报风暴), pit-048 (埋点数据污染), pit-049 (会话回放隐私), pit-050 (性能预算虚设) |
 | 内存泄漏 | pit-003 (闭包引用), pit-025 (事件监听未清理), pit-026 (定时器/WebSocket) |
 | 构建失败 | pit-011 (chunk 404), pit-012 (Tree Shaking), pit-013 (HMR 状态) |
 | 输入异常 | pit-002 (闭包陷阱), pit-005 (批处理), pit-017 (IME 组合), pit-027 (软键盘) |
@@ -153,6 +163,7 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 - **#nextjs**: pit-001, pit-028, pit-029
 - **#compatibility**: pit-020 ~ pit-023, pit-027
 - **#architecture**: pit-041 ~ pit-045
+- **#observability**: pit-046 ~ pit-050
 
 ---
 
@@ -182,3 +193,5 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 | `references/decisions.md` | 架构决策树 | B |
 | `references/compatibility-matrix.md` | 多终端兼容性矩阵 | D |
 | `references/ai-frontend-patterns.md` | AI 前端应用模式 | E |
+| `references/frontend-observability.md` | 前端可观测性全链路 (CWV/错误监控/埋点/会话回放/日志) | B, C, F, G |
+| `references/performance-engineering.md` | 运行时性能工程 (CWV深度/Performance APIs/RUM架构/预算CI/内存/帧率) | C, G |
