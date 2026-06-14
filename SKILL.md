@@ -118,9 +118,10 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 2. 读取 `references/pitfalls/INDEX.md` 中 `#observability` `#monitoring` `#rum` 标签的陷阱（pit-046 ~ pit-050）
 3. 如需性能预算和 CI 门禁，读取 `references/performance-engineering.md` 第四章
 
-### 场景 D: 多终端兼容
+### 场景 D: 多终端兼容 / 跨端框架
 1. **MUST** 读取 `references/compatibility-matrix.md` 完整内容，确认目标终端覆盖
-2. 读取 `references/pitfalls/INDEX.md` 中 `#compatibility` 标签的陷阱
+2. 读取 `references/pitfalls/INDEX.md` 中 `#compatibility` `#cross-platform` `#taro` `#uni-app` `#react-native` `#flutter-web` 标签的陷阱
+3. 如涉及跨端框架技术选型或架构设计，读取 `references/cross-platform-architecture.md` 完整内容
 
 ### 场景 E: AI 前端集成
 1. **MUST** 读取 `references/ai-frontend-patterns.md` 完整内容
@@ -131,6 +132,37 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 2. 读取 `references/patterns.md` 中反模式部分
 3. 读取 `references/pitfalls/INDEX.md` 中相关标签陷阱
 4. 如审查涉及埋点/Sentry/日志上报代码，读取 `references/frontend-observability.md` 第八章反模式
+
+### 场景 H: 小程序开发/优化
+1. **MUST** 读取 `references/miniprogram-architecture.md` 双线程架构和性能优化章节
+2. 读取 `references/pitfalls/INDEX.md` 中 `#miniprogram` 标签陷阱（pit-051 ~ pit-056）
+
+### 场景 I: 跨端方案选型/开发
+1. **MUST** 读取 `references/cross-platform-architecture.md` 全景对比和选型决策树
+2. 读取 `references/pitfalls/INDEX.md` 中 `#taro` `#react-native` `#uni-app` `#flutter-web` 标签陷阱
+
+### 场景 J: TypeScript 工程化
+1. **MUST** 读取 `references/typescript-engineering.md` 对应章节
+2. 读取 `references/pitfalls/INDEX.md` 中 `#typescript` 标签陷阱（pit-062, pit-063, pit-069）
+
+### 场景 K: 前端安全审计
+1. **MUST** 读取 `references/frontend-security.md` 完整内容和审计清单
+2. 读取 `references/pitfalls/INDEX.md` 中 `#security` `#xss` `#csp` `#supply-chain` 标签陷阱（pit-064 ~ pit-068）
+
+### 场景 L: PWA/离线化
+1. **MUST** 读取 `references/pwa-offline-architecture.md` 缓存策略章节
+2. 读取 `references/pitfalls/INDEX.md` 中 `#pwa` `#service-worker` 标签陷阱（pit-070, pit-071）
+
+### 场景 M: 国际化 (i18n)
+1. **MUST** 读取 `references/i18n-architecture.md` ICU Message Format 和框架集成章节
+2. 读取 `references/pitfalls/INDEX.md` 中 `#i18n` `#rtl` 标签陷阱（pit-072, pit-073）
+
+### 场景 N: Edge/Serverless
+1. **MUST** 读取 `references/edge-serverless-architecture.md` 运行时对比和部署模式
+2. 读取 `references/pitfalls/INDEX.md` 中 `#edge` `#serverless` 标签陷阱（pit-074, pit-075）
+
+### 场景 O: GraphQL/WASM/低代码
+1. 读取 `references/pitfalls/INDEX.md` 中 `#graphql` `#wasm` `#low-code` 标签陷阱（pit-076 ~ pit-079）
 
 ---
 
@@ -149,6 +181,7 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 | 输入异常 | pit-002 (闭包陷阱), pit-005 (批处理), pit-017 (IME 组合), pit-027 (软键盘) |
 | 数据异常 | pit-004 (useRef/useState), pit-015 (浮点数), pit-016 (forEach async), pit-018 (Date 时区) |
 | 多终端 | pit-020 (WebView postMessage), pit-021 (WKWebView), pit-022 (Android WebView), pit-023 (Safe Area) |
+| 跨端框架 | pit-057 (Taro编译时vs运行时), pit-058 (RN Bridge瓶颈), pit-059 (uni-app条件编译), pit-060 (跨端样式兼容), pit-061 (Flutter Web首屏) |
 | 服务端渲染 | pit-001 (水合不匹配), pit-028 (Next.js 缓存), pit-029 (流式 SSR 中断) |
 
 ### 按技术栈查找
@@ -162,6 +195,11 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 - **#nodejs**: pit-038 ~ pit-040
 - **#nextjs**: pit-001, pit-028, pit-029
 - **#compatibility**: pit-020 ~ pit-023, pit-027
+- **#taro**: pit-057
+- **#uni-app**: pit-059
+- **#react-native**: pit-014, pit-058
+- **#flutter-web**: pit-061
+- **#cross-platform**: pit-057 ~ pit-061
 - **#architecture**: pit-041 ~ pit-045
 - **#observability**: pit-046 ~ pit-050
 
@@ -192,6 +230,7 @@ tags: [frontend, architecture, react, vue, nodejs, webpack, vite, nextjs, compat
 | `references/checklist.md` | 多维度检查清单 | B, C, F |
 | `references/decisions.md` | 架构决策树 | B |
 | `references/compatibility-matrix.md` | 多终端兼容性矩阵 | D |
+| `references/cross-platform-architecture.md` | 跨端框架架构深度指南 (Taro/uni-app/RN/Flutter/Electron) | D |
 | `references/ai-frontend-patterns.md` | AI 前端应用模式 | E |
 | `references/frontend-observability.md` | 前端可观测性全链路 (CWV/错误监控/埋点/会话回放/日志) | B, C, F, G |
 | `references/performance-engineering.md` | 运行时性能工程 (CWV深度/Performance APIs/RUM架构/预算CI/内存/帧率) | C, G |
